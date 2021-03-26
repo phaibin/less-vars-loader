@@ -1,10 +1,10 @@
 {
-  "name": "@hon2a/less-vars-loader",
+  "name": "less-vars-loader",
   "version": "0.0.5",
   "description": "Webpack loader providing a seamless bridge from Less variable sheets to JS files",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hon2a/less-vars-loader"
+    "url": "git+https://github.com/phaibin/less-vars-loader"
   },
   "author": "Jan Konopásek",
   "license": "MIT",
