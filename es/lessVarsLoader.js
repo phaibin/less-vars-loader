@@ -5,7 +5,6 @@ import _JSON$stringify from "@babel/runtime-corejs3/core-js-stable/json/stringif
 import _Object$entries from "@babel/runtime-corejs3/core-js-stable/object/entries";
 import _mapInstanceProperty from "@babel/runtime-corejs3/core-js-stable/instance/map";
 import _forEachInstanceProperty from "@babel/runtime-corejs3/core-js-stable/instance/for-each";
-import _parseInt from "@babel/runtime-corejs3/core-js-stable/parse-int";
 import _slicedToArray from "@babel/runtime-corejs3/helpers/slicedToArray";
 import "regenerator-runtime/runtime";
 import { getOptions } from 'loader-utils';
@@ -24,12 +23,14 @@ export function lessVarsLoader() {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          _ref = (_getOptions = getOptions(this)) !== null && _getOptions !== void 0 ? _getOptions : function (_ref2) {
-            var _ref3 = _slicedToArray(_ref2, 2),
-                key = _ref3[0],
-                value = _ref3[1];
+          _ref = (_getOptions = getOptions(this)) !== null && _getOptions !== void 0 ? _getOptions : {
+            transform: function transform(_ref2) {
+              var _ref3 = _slicedToArray(_ref2, 2),
+                  key = _ref3[0],
+                  value = _ref3[1];
 
-            return [camelCase(key), /^\d+px$/.test(value) ? _parseInt(value, 10) : value];
+              return [camelCase(key), value];
+            }
           }, lessOptions = _ref.lessOptions, transform = _ref.transform;
           callback = this.async();
           _loadLessWithImports = loadLessWithImports(this.resourcePath), code = _loadLessWithImports.code, imports = _loadLessWithImports.imports;

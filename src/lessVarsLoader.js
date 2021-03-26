@@ -5,7 +5,7 @@ import camelCase from 'lodash/camelCase'
 
 // @note Ignores source and reads it on its own, as `loadAndResolveLessVars` doesn't accept already read file.
 export async function lessVarsLoader() {
-  const { lessOptions, transform } = getOptions(this) ?? (([key, value]) => [camelCase(key), /^\d+px$/.test(value) ? parseInt(value, 10) : value])
+  const { lessOptions, transform } = getOptions(this) ?? { transform: ([key, value]) => [camelCase(key), value] }
   const callback = this.async()
 
   const { code, imports } = loadLessWithImports(this.resourcePath)
